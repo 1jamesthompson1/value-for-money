@@ -1,0 +1,11 @@
+{
+  "name": "opencode-value-map",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static dashboard comparing OpenCode Go usage limits with Artificial Analysis intelligence scores.",
+  "scripts": {
+    "scrape": "node scripts/scrape.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}

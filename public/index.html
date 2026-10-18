@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenCode Go — usage vs intelligence</title>
+    <meta
+      name="description"
+      content="Unofficial daily snapshot of OpenCode Go model usage limits plotted against Artificial Analysis intelligence scores, with the Pareto front."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d9488'/%3E%3Ccircle cx='11' cy='21' r='3' fill='white'/%3E%3Ccircle cx='17' cy='14' r='3' fill='white'/%3E%3Ccircle cx='23' cy='9' r='3' fill='white'/%3E%3Cpath d='M11 21h6v-7h6' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">OpenCode Go · value map</p>
+        <h1>Usage vs intelligence</h1>
+        <p class="lede">
+          Every model included with
+          <a href="https://opencode.ai/v2/docs/console/go/#usage-limits" target="_blank" rel="noopener"
+            >OpenCode Go</a
+          >, plotted by included monthly usage and the
+          <a href="https://artificialanalysis.ai/leaderboards/models" target="_blank" rel="noopener"
+            >Artificial Analysis</a
+          >
+          Intelligence Index. The Pareto front marks the models that are not beaten on
+          both.
+        </p>
+        <p class="meta" id="meta">Loading latest snapshot…</p>
+      </header>
+
+      <section class="controls" aria-label="Chart options">
+        <div class="control-group">
+          <span class="control-label" id="plan-label">Plan</span>
+          <div class="segmented" id="plan-control" role="group" aria-labelledby="plan-label">
+            <button type="button" data-plan="go" aria-pressed="true">Go · $10/mo</button>
+            <button type="button" data-plan="go-plus" aria-pressed="false">Go Plus · $40/mo</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label" id="metric-label">Usage axis</span>
+          <div class="segmented" id="metric-control" role="group" aria-labelledby="metric-label">
+            <button type="button" data-metric="requests" aria-pressed="true">Requests / month</button>
+            <button type="button" data-metric="limit" aria-pressed="false">Included $ / month</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card chart-card" id="chart-card">
+        <div class="card-head">
+          <div>
+            <h2 id="chart-title">Estimated requests per month</h2>
+            <p class="card-sub" id="chart-sub">Higher is better on both axes.</p>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span class="legend-item"><span class="dot dot-front"></span>Pareto front</span>
+            <span class="legend-item"><span class="dot dot-other"></span>Matched model</span>
+            <span class="legend-item"><span class="line-key"></span>Frontier</span>
+          </div>
+        </div>
+        <div class="chart-wrap" id="chart-wrap">
+          <div id="chart" class="chart"></div>
+          <div id="tooltip" class="tooltip" hidden></div>
+        </div>
+        <p class="chart-note" id="chart-note"></p>
+      </section>
+
+      <section class="card front-card">
+        <div class="card-head">
+          <div>
+            <h2>Pareto front</h2>
+            <p class="card-sub">
+              No other matched model gives you both more usage and a higher intelligence score.
+            </p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="front-table">
+            <thead>
+              <tr>
+                <th scope="col">Model</th>
+                <th scope="col" class="num">AA score</th>
+                <th scope="col" class="num">Requests / mo</th>
+                <th scope="col" class="num">Included / mo</th>
+              </tr>
+            </thead>
+            <tbody id="front-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Data refreshed daily by a GitHub Action. Usage figures are OpenCode’s published
+          estimates; intelligence scores come from Artificial Analysis. This is an
+          unofficial comparison — pricing and model availability can change.
+        </p>
+        <p id="footer-links">
+          <a href="./data/latest.json">Raw snapshot</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://github.com/1jamesthompson1/value-for-money">Source</a>
+        </p>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
