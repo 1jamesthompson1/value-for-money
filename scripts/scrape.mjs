@@ -240,7 +240,8 @@ function parseOpencode(html) {
 /* Artificial Analysis                                                 */
 /* ------------------------------------------------------------------ */
 
-function extractInitialModels(html) {
+/** Concatenated Next.js RSC payload from a page's inline script chunks. */
+function rscPayload(html) {
   const chunkRe =
     /self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)<\/script>/gs;
   const chunks = [];
@@ -252,18 +253,27 @@ function extractInitialModels(html) {
       // Ignore malformed chunks rather than failing the whole scrape.
     }
   }
-  const payload = chunks.join("");
-  const marker = payload.indexOf('"initialModels":[');
-  if (marker === -1) throw new Error("Could not find initialModels in AA payload");
+  return chunks.join("");
+}
 
-  const start = payload.indexOf("[", marker);
+/** Bracket-matched JSON array/object following `marker` in an RSC payload. */
+function jsonAfter(payload, marker) {
+  const at = payload.indexOf(marker);
+  if (at === -1) return null;
+
+  let index = at + marker.length;
+  while (index < payload.length && /\s/.test(payload[index])) index += 1;
+
+  const opener = payload[index];
+  if (opener !== "[" && opener !== "{") return null;
+  const closer = opener === "[" ? "]" : "}";
+  const begin = index;
+
   let depth = 0;
   let inString = false;
   let escaped = false;
-  let end = -1;
-
-  for (let i = start; i < payload.length; i += 1) {
-    const char = payload[i];
+  for (; index < payload.length; index += 1) {
+    const char = payload[index];
     if (inString) {
       if (escaped) escaped = false;
       else if (char === "\\") escaped = true;
@@ -271,27 +281,53 @@ function extractInitialModels(html) {
       continue;
     }
     if (char === '"') inString = true;
-    else if (char === "[") depth += 1;
-    else if (char === "]") {
+    else if (char === opener) depth += 1;
+    else if (char === closer) {
       depth -= 1;
       if (depth === 0) {
-        end = i + 1;
-        break;
+        try {
+          return JSON.parse(payload.slice(begin, index + 1));
+        } catch {
+          return null;
+        }
       }
     }
   }
+  return null;
+}
 
-  if (end === -1) throw new Error("Unterminated initialModels array");
-  const models = JSON.parse(payload.slice(start, end));
-  if (!Array.isArray(models) || models.length < 50) {
-    throw new Error(`Unexpected AA model count: ${models.length}`);
+/**
+ * Every release in AA's catalogue, including the ones retired from the
+ * leaderboard (`deprecated: true`). Their model pages still carry a score.
+ */
+function parseAaReleases(payload) {
+  const releases = new Map();
+  const releaseRe =
+    /\{"slug":"([^"]+)","name":"([^"]+)","deprecated":(true|false),"releaseDate":("(?:[^"\\]|\\.)*"|null)/g;
+
+  for (const match of payload.matchAll(releaseRe)) {
+    const name = match[2];
+    releases.set(match[1], {
+      slug: match[1],
+      name,
+      baseName: baseName(name),
+      deprecated: match[3] === "true",
+      releaseDate: match[4] === "null" ? null : match[4].slice(1, -1),
+    });
   }
-  return models;
+  return [...releases.values()];
 }
 
 function parseArtificialAnalysis(html) {
-  const raw = extractInitialModels(html);
-  return raw
+  const payload = rscPayload(html);
+  const raw = jsonAfter(payload, '"initialModels":');
+  if (!Array.isArray(raw) || raw.length < 50) {
+    throw new Error(
+      `Unexpected AA model count: ${Array.isArray(raw) ? raw.length : 0}`
+    );
+  }
+
+  const models = raw
     .filter(
       (model) =>
         model &&
@@ -311,6 +347,8 @@ function parseArtificialAnalysis(html) {
       priceInput: model.price1mInputTokens ?? null,
       priceOutput: model.price1mOutputTokens ?? null,
     }));
+
+  return { models, releases: parseAaReleases(payload) };
 }
 
 /**
@@ -328,31 +366,87 @@ function isNumericToken(token) {
   return /^\d+$/.test(token);
 }
 
-function matchAa(opencodeName, aaModels) {
+/** AA entries whose name matches an OpenCode model name. */
+function findCandidates(opencodeName, entries) {
   const wanted = normalizeName(opencodeName);
-  const target = AA_ALIASES[wanted] ?? wanted;
-  const targetTokens = target.split(" ");
+  // AA has no "Contributor" suffix; OpenCode adds it to some free tiers.
+  const target = (AA_ALIASES[wanted] ?? wanted)
+    .split(" ")
+    .filter((token) => token !== "contributor");
+  const targetKey = target.join(" ");
 
-  const candidates = aaModels.filter((model) => {
+  return entries.filter((model) => {
     const candidate = normalizeName(model.baseName ?? model.name);
-    if (candidate === target) return true;
+    if (candidate === targetKey) return true;
     const candidateTokens = candidate.split(" ");
     // Allow AA revision suffixes, e.g. "DeepSeek V4 Pro 0813" or "Qwen3.8 Max (0902)".
-    if (
-      candidateTokens.length > targetTokens.length &&
-      targetTokens.every((token, index) => candidateTokens[index] === token) &&
-      candidateTokens.slice(targetTokens.length).every(isNumericToken)
-    ) {
-      return true;
-    }
-    return false;
+    return (
+      candidateTokens.length > target.length &&
+      target.every((token, index) => candidateTokens[index] === token) &&
+      candidateTokens.slice(target.length).every(isNumericToken)
+    );
   });
+}
 
+function matchAa(opencodeName, aaModels) {
+  const candidates = findCandidates(opencodeName, aaModels);
   if (!candidates.length) return null;
   // Multiple reasoning variants exist; use the strongest configuration.
   return candidates.reduce((best, current) =>
     current.intelligence > best.intelligence ? current : best
   );
+}
+
+const aaPageCache = new Map();
+
+/**
+ * AA keeps a page for every model it has tested, even after it is retired from
+ * the leaderboard. Read the page's own record so those models keep a score.
+ */
+async function fetchAaPage(slug) {
+  if (aaPageCache.has(slug)) return aaPageCache.get(slug);
+
+  const promise = (async () => {
+    const html = await fetchText(`https://artificialanalysis.ai/models/${slug}`);
+    const current = jsonAfter(rscPayload(html), '"currentModel":');
+    if (!current || typeof current.intelligenceIndex !== "number") return null;
+    const name = current.name ?? slug;
+    return {
+      name,
+      baseName: baseName(name),
+      slug: current.slug ?? slug,
+      intelligence: current.intelligenceIndex,
+      estimated: Boolean(current.intelligenceIndexIsEstimated),
+      creator: current.creator?.name ?? null,
+      openWeights: Boolean(current.isOpenWeights),
+      contextWindow: current.contextWindowTokens ?? null,
+    };
+  })();
+
+  aaPageCache.set(slug, promise);
+  return promise;
+}
+
+/** Fallback for models AA has retired from the leaderboard. */
+async function matchAaPage(opencodeName, releases) {
+  const candidates = findCandidates(opencodeName, releases);
+  if (!candidates.length) return null;
+
+  // Prefer an exact name match, then the most recently released one.
+  const wanted = normalizeName(opencodeName);
+  const exact = candidates.filter(
+    (release) => normalizeName(release.name) === wanted
+  );
+  const chosen = (exact.length ? exact : candidates).sort((a, b) =>
+    String(b.releaseDate ?? "").localeCompare(String(a.releaseDate ?? ""))
+  )[0];
+
+  try {
+    return await fetchAaPage(chosen.slug);
+  } catch (error) {
+    console.warn(`  ${opencodeName}: could not read ${chosen.slug} (${error.message})`);
+    return null;
+  }
 }
 
 /* ------------------------------------------------------------------ */
@@ -414,10 +508,13 @@ async function main() {
 
   console.log("Fetching Artificial Analysis leaderboard…");
   let aaModels = [];
+  let aaReleases = [];
   try {
     const aaHtml = await fetchText(AA_URL);
-    aaModels = parseArtificialAnalysis(aaHtml);
-    console.log(`  parsed ${aaModels.length} AA models`);
+    ({ models: aaModels, releases: aaReleases } = parseArtificialAnalysis(aaHtml));
+    console.log(
+      `  parsed ${aaModels.length} AA models, ${aaReleases.length} catalogued releases`
+    );
   } catch (error) {
     console.warn(`  AA scrape failed: ${error.message}`);
     console.warn("  falling back to scores from the previous snapshot");
@@ -427,11 +524,20 @@ async function main() {
   const models = [];
   const unmatched = [];
   const usedAliases = [];
+  const retired = [];
 
   for (const model of Object.values(plans.go.models)) {
-    const aa = aaModels.length
+    let aa = aaModels.length
       ? matchAa(model.name, aaModels)
       : fallback.get(normalizeName(model.name)) ?? null;
+
+    // AA retires models from the leaderboard long before OpenCode drops them,
+    // so fall back to the score on the model's own AA page.
+    if (!aa && aaModels.length) {
+      aa = await matchAaPage(model.name, aaReleases);
+      if (aa) retired.push(`${model.name} → ${aa.name}`);
+    }
+
     if (!aa) {
       unmatched.push(model.name);
       continue;
@@ -457,7 +563,7 @@ async function main() {
       opencode: OPENCODE_URL,
       artificialAnalysis: AA_URL,
       aaMethod:
-        "Highest Artificial Analysis Intelligence Index variant per model (e.g. Max/High reasoning).",
+        "Highest Artificial Analysis Intelligence Index configuration per model. Models retired from the AA leaderboard are read from their AA model page.",
     },
     plans: {
       go: { label: "Go", monthlyPrice: 10 },
@@ -514,6 +620,7 @@ async function main() {
 
   console.log(`Wrote snapshot for ${date}`);
   console.log(`Matched ${models.length} models, ${unmatched.length} unmatched`);
+  if (retired.length) console.log(`  from AA model pages: ${retired.join("; ")}`);
   if (unmatched.length) console.log(`  unmatched: ${unmatched.join(", ")}`);
   if (usedAliases.length) console.log(`  aliases: ${usedAliases.join("; ")}`);
 }

@@ -516,6 +516,31 @@ h2 {
   font-size: 11px;
 }
 
+/* Unmatched models -------------------------------------------------- */
+
+.unlisted-card {
+  margin-top: 20px;
+  padding: 22px;
+}
+
+.unlisted {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 4px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
 /* Footer ----------------------------------------------------------- */
 
 .footer {
@@ -555,7 +580,8 @@ h2 {
   }
 
   .chart-card,
-  .front-card {
+  .front-card,
+  .unlisted-card {
     padding: 16px;
   }
 

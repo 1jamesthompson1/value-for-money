@@ -41,6 +41,8 @@ const noteEl = document.getElementById("chart-note");
 const titleEl = document.getElementById("chart-title");
 const subEl = document.getElementById("chart-sub");
 const frontBody = document.getElementById("front-body");
+const unlistedCard = document.getElementById("unlisted-card");
+const unlistedEl = document.getElementById("unlisted");
 
 let DATA = null;
 let drawQueued = false;
@@ -558,6 +560,23 @@ function renderFrontTable(front) {
     .join("");
 }
 
+function renderUnlisted() {
+  const names = [...(DATA.unmatched ?? [])].sort((a, b) =>
+    a.localeCompare(b, "en", { sensitivity: "base" })
+  );
+
+  if (!names.length) {
+    unlistedCard.hidden = true;
+    unlistedEl.innerHTML = "";
+    return;
+  }
+
+  unlistedEl.innerHTML = names
+    .map((name) => `<li class="chip">${escapeHtml(name)}</li>`)
+    .join("");
+  unlistedCard.hidden = false;
+}
+
 function renderNote(rows, front) {
   const matched = DATA.models.length;
   const unmatched = DATA.unmatched?.length ?? 0;
@@ -567,7 +586,7 @@ function renderNote(rows, front) {
   ];
   if (unmatched) {
     parts.push(
-      `${unmatched} Go model${unmatched === 1 ? "" : "s"} without an AA score excluded`
+      `${unmatched} Go model${unmatched === 1 ? "" : "s"} without an AA score listed below`
     );
   }
   if (unlimited) parts.push("∞ = unlimited free model");
@@ -645,6 +664,7 @@ async function boot() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     DATA = await response.json();
     renderMeta();
+    renderUnlisted();
     draw();
   } catch (error) {
     metaEl.textContent = "Could not load data.";
