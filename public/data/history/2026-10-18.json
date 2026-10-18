@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-18T21:45:46.208Z",
+  "generatedAt": "2026-10-18T22:23:35.347Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
-    "aaMethod": "Highest Artificial Analysis Intelligence Index variant per model (e.g. Max/High reasoning)."
+    "aaMethod": "Highest Artificial Analysis Intelligence Index configuration per model. Models retired from the AA leaderboard are read from their AA model page."
   },
   "plans": {
     "go": {
@@ -318,6 +318,33 @@
       }
     },
     {
+      "name": "Muse Spark 1.2 Contributor",
+      "input": 0.1,
+      "output": 0.2,
+      "cachedRead": 0.002,
+      "cachedWrite": null,
+      "monthlyLimit": 60,
+      "monthlyRequests": 226600,
+      "notes": [],
+      "aa": {
+        "name": "Muse Spark 1.2 (Xhigh)",
+        "slug": "muse-spark-1-2",
+        "intelligence": 39.58,
+        "estimated": false,
+        "creator": "Meta",
+        "openWeights": false,
+        "contextWindow": 1048576
+      },
+      "go": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 226600
+      },
+      "go-plus": {
+        "monthlyLimit": 120,
+        "monthlyRequests": 453200
+      }
+    },
+    {
       "name": "DeepSeek V4.1 Flash",
       "input": 0.15,
       "output": 0.6,
@@ -399,6 +426,33 @@
       }
     },
     {
+      "name": "GPT 5.6 Luna",
+      "input": 0.2,
+      "output": 1.2,
+      "cachedRead": 0.02,
+      "cachedWrite": 0.25,
+      "monthlyLimit": 15,
+      "monthlyRequests": 10250,
+      "notes": [],
+      "aa": {
+        "name": "GPT-5.6 Luna (Max)",
+        "slug": "gpt-5-6-luna",
+        "intelligence": 37.32,
+        "estimated": false,
+        "creator": "OpenAI",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 10250
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 41000
+      }
+    },
+    {
       "name": "DeepSeek V4 Pro",
       "input": 0.66,
       "output": 1.98,
@@ -423,6 +477,33 @@
       "go-plus": {
         "monthlyLimit": 60,
         "monthlyRequests": 20800
+      }
+    },
+    {
+      "name": "GLM-5.2",
+      "input": 1.4,
+      "output": 4.4,
+      "cachedRead": 0.26,
+      "cachedWrite": null,
+      "monthlyLimit": 60,
+      "monthlyRequests": 4300,
+      "notes": [],
+      "aa": {
+        "name": "GLM-5.2 (Max)",
+        "slug": "glm-5-2",
+        "intelligence": 33.71,
+        "estimated": false,
+        "creator": "Z AI",
+        "openWeights": true,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 4300
+      },
+      "go-plus": {
+        "monthlyLimit": 180,
+        "monthlyRequests": 12900
       }
     },
     {
@@ -479,6 +560,33 @@
       "go-plus": {
         "monthlyLimit": 180,
         "monthlyRequests": 48000
+      }
+    },
+    {
+      "name": "MiMo-V2.5-Pro",
+      "input": 0.435,
+      "output": 0.87,
+      "cachedRead": 0.003625,
+      "cachedWrite": null,
+      "monthlyLimit": 15,
+      "monthlyRequests": 16300,
+      "notes": [],
+      "aa": {
+        "name": "MiMo-V2.5-Pro (Reasoning)",
+        "slug": "mimo-v2-5-pro",
+        "intelligence": 25.99,
+        "estimated": false,
+        "creator": "Xiaomi",
+        "openWeights": true,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 16300
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 65200
       }
     },
     {
@@ -563,6 +671,33 @@
       }
     },
     {
+      "name": "MiMo-V2.5",
+      "input": 0.14,
+      "output": 0.28,
+      "cachedRead": 0.0028,
+      "cachedWrite": null,
+      "monthlyLimit": 60,
+      "monthlyRequests": 150400,
+      "notes": [],
+      "aa": {
+        "name": "MiMo-V2.5",
+        "slug": "mimo-v2-5-0424",
+        "intelligence": 21.82,
+        "estimated": false,
+        "creator": "Xiaomi",
+        "openWeights": true,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 150400
+      },
+      "go-plus": {
+        "monthlyLimit": 120,
+        "monthlyRequests": 300800
+      }
+    },
+    {
       "name": "LongCat-2.0",
       "input": 0.3,
       "output": 1.2,
@@ -591,13 +726,8 @@
     }
   ],
   "unmatched": [
-    "GLM-5.2",
     "LongCat 2.5 Preview Free",
-    "MiMo-V2.5",
-    "MiMo-V2.5-Pro",
-    "Muse Spark 1.2 Contributor",
     "Hy4 preview",
-    "Space Bunny",
-    "GPT 5.6 Luna"
+    "Space Bunny"
   ]
 }
