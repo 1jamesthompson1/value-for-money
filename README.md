@@ -4,8 +4,9 @@ A single static page that plots **included monthly usage** for every OpenCode Go
 against its **Artificial Analysis Intelligence Index**, and highlights the Pareto front:
 the models that are not beaten on both usage and intelligence.
 
-- Live site: https://1jamesthompson1.github.io/value-for-money/ (after Pages is enabled)
-- Data is refreshed **daily** by a GitHub Action.
+- Live site: https://james.sjhl.nz/value-for-money/
+  (also reachable at https://1jamesthompson1.github.io/value-for-money/)
+- Data is refreshed **daily** at 05:17 UTC by a GitHub Action.
 - No framework, no build step, no runtime dependencies.
 
 ![scatter plot](https://raw.githubusercontent.com/1jamesthompson1/value-for-money/main/.github/preview.png)
@@ -96,7 +97,8 @@ lists the available dates.
 ## GitHub setup
 
 1. Push this repository to GitHub.
-2. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+2. **Settings → Pages → Build and deployment → Source: GitHub Actions.** (Already done for
+   this repository.)
 3. Run the **Refresh data and deploy** workflow once (or push to `main`).
 
 The workflow runs at 05:17 UTC every day, commits the new snapshot, and deploys the
