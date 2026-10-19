@@ -22,10 +22,11 @@ as estimated **requests / month** or **included $ / month** (both "higher is bet
 and the Pareto front is recomputed in the browser whenever you switch.
 
 The two sources disagree on a few names and list some models more than once; those
-rows are reconciled in `scripts/scrape.mjs` (`AA_ALIASES` and friends). Models AA has
-retired from its leaderboard are still scored from their AA model page. Anything with
-no intelligence score anywhere is excluded, listed at the bottom of the page, and
-recorded in the snapshot's `unmatched` array.
+rows are reconciled in `scripts/scrape.mjs`. OpenCode's "Contributor" and "Free"
+suffixes are stripped before matching, and genuine name differences are handled by
+`AA_ALIASES`. Models AA has retired from its leaderboard are still scored from their
+AA model page. Anything with no intelligence score anywhere is excluded, listed at
+the bottom of the page, and recorded in the snapshot's `unmatched` array.
 
 This is an unofficial comparison. It is not affiliated with OpenCode or Artificial
 Analysis.

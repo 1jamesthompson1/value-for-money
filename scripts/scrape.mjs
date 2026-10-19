@@ -115,6 +115,18 @@ function normalizeName(name) {
     .replace(/\s+/g, " ");
 }
 
+/** OpenCode-only tier suffixes that Artificial Analysis omits from its names. */
+const MATCH_SUFFIXES = new Set(["contributor", "free"]);
+
+/** Normalise a model name and drop trailing tier suffixes for AA matching. */
+function matchName(name) {
+  const parts = normalizeName(name).split(" ").filter(Boolean);
+  while (parts.length > 1 && MATCH_SUFFIXES.has(parts[parts.length - 1])) {
+    parts.pop();
+  }
+  return parts.join(" ");
+}
+
 function tokens(name) {
   return normalizeName(name).split(" ").filter(Boolean);
 }
@@ -353,12 +365,10 @@ function parseArtificialAnalysis(html) {
 
 /**
  * Manual aliases where Artificial Analysis uses a different name.
- * Keys/values are normalizeName() output.
+ * OpenCode's "Contributor"/"Free" suffixes are stripped automatically, so only
+ * genuine naming differences belong here. Keys/values are normalizeName() output.
  */
 const AA_ALIASES = {
-  "gemini 4 argon contributor": "gemini 4 argon",
-  "muse spark 1 3 contributor": "muse spark 1 3",
-  "beam free": "beam 1 0",
   "qwen3 8 flash": "qwen3 8 flash next",
 };
 
@@ -369,21 +379,19 @@ function isNumericToken(token) {
 /** AA entries whose name matches an OpenCode model name. */
 function findCandidates(opencodeName, entries) {
   const wanted = normalizeName(opencodeName);
-  // AA has no "Contributor" suffix; OpenCode adds it to some free tiers.
-  const target = (AA_ALIASES[wanted] ?? wanted)
-    .split(" ")
-    .filter((token) => token !== "contributor");
-  const targetKey = target.join(" ");
+  // AA has no "Contributor"/"Free" suffix; OpenCode adds it to some tiers.
+  const target = matchName(AA_ALIASES[wanted] ?? wanted);
+  const targetTokens = target.split(" ").filter(Boolean);
 
   return entries.filter((model) => {
     const candidate = normalizeName(model.baseName ?? model.name);
-    if (candidate === targetKey) return true;
+    if (candidate === target) return true;
     const candidateTokens = candidate.split(" ");
     // Allow AA revision suffixes, e.g. "DeepSeek V4 Pro 0813" or "Qwen3.8 Max (0902)".
     return (
-      candidateTokens.length > target.length &&
-      target.every((token, index) => candidateTokens[index] === token) &&
-      candidateTokens.slice(target.length).every(isNumericToken)
+      candidateTokens.length > targetTokens.length &&
+      targetTokens.every((token, index) => candidateTokens[index] === token) &&
+      candidateTokens.slice(targetTokens.length).every(isNumericToken)
     );
   });
 }
@@ -433,9 +441,9 @@ async function matchAaPage(opencodeName, releases) {
   if (!candidates.length) return null;
 
   // Prefer an exact name match, then the most recently released one.
-  const wanted = normalizeName(opencodeName);
+  const wanted = matchName(opencodeName);
   const exact = candidates.filter(
-    (release) => normalizeName(release.name) === wanted
+    (release) => matchName(release.name) === wanted
   );
   const chosen = (exact.length ? exact : candidates).sort((a, b) =>
     String(b.releaseDate ?? "").localeCompare(String(a.releaseDate ?? ""))
