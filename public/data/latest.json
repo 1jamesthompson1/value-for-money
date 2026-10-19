@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T22:23:35.347Z",
+  "generatedAt": "2026-10-19T10:48:22.527Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -151,6 +151,33 @@
       "go-plus": {
         "monthlyLimit": 60,
         "monthlyRequests": 3240
+      }
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "input": 0.15,
+      "output": 0.6,
+      "cachedRead": 0.003,
+      "cachedWrite": null,
+      "monthlyLimit": 80,
+      "monthlyRequests": 173330,
+      "notes": [],
+      "aa": {
+        "name": "DeepSeek V4.1 Flash 1017 (Max)",
+        "slug": "deepseek-v4-1-flash-1017",
+        "intelligence": 45.1,
+        "estimated": false,
+        "creator": "DeepSeek",
+        "openWeights": true,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 80,
+        "monthlyRequests": 173330
+      },
+      "go-plus": {
+        "monthlyLimit": 160,
+        "monthlyRequests": 346670
       }
     },
     {
@@ -342,33 +369,6 @@
       "go-plus": {
         "monthlyLimit": 120,
         "monthlyRequests": 453200
-      }
-    },
-    {
-      "name": "DeepSeek V4.1 Flash",
-      "input": 0.15,
-      "output": 0.6,
-      "cachedRead": 0.003,
-      "cachedWrite": null,
-      "monthlyLimit": 80,
-      "monthlyRequests": 173330,
-      "notes": [],
-      "aa": {
-        "name": "DeepSeek V4.1 Flash (Max)",
-        "slug": "deepseek-v4-1-flash",
-        "intelligence": 39.46,
-        "estimated": false,
-        "creator": "DeepSeek",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 80,
-        "monthlyRequests": 173330
-      },
-      "go-plus": {
-        "monthlyLimit": 160,
-        "monthlyRequests": 346670
       }
     },
     {
