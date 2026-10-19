@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T22:15:07.313Z",
+  "generatedAt": "2026-10-19T22:21:52.052Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -288,6 +288,35 @@
       "go-plus": {
         "monthlyLimit": 60,
         "monthlyRequests": 76920
+      }
+    },
+    {
+      "name": "MiniMax M3.1 Flash Free",
+      "input": 0,
+      "output": 0,
+      "cachedRead": 0,
+      "cachedWrite": null,
+      "monthlyLimit": "unlimited",
+      "monthlyRequests": "unlimited",
+      "notes": [
+        "limited time"
+      ],
+      "aa": {
+        "name": "MiniMax-M3.1-Flash",
+        "slug": "minimax-m3-1-flash",
+        "intelligence": 42.38,
+        "estimated": false,
+        "creator": "MiniMax",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": "unlimited",
+        "monthlyRequests": "unlimited"
+      },
+      "go-plus": {
+        "monthlyLimit": "unlimited",
+        "monthlyRequests": "unlimited"
       }
     },
     {
@@ -727,7 +756,6 @@
   ],
   "unmatched": [
     "LongCat 2.5 Preview Free",
-    "MiniMax M3.1 Flash Free",
     "Hy4 preview"
   ]
 }
