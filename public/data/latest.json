@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T10:48:22.527Z",
+  "generatedAt": "2026-10-19T22:15:07.313Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -727,7 +727,7 @@
   ],
   "unmatched": [
     "LongCat 2.5 Preview Free",
-    "Hy4 preview",
-    "Space Bunny"
+    "MiniMax M3.1 Flash Free",
+    "Hy4 preview"
   ]
 }
