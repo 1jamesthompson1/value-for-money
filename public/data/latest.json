@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T22:21:52.052Z",
+  "generatedAt": "2026-10-20T10:06:42.028Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -304,7 +304,7 @@
       "aa": {
         "name": "MiniMax-M3.1-Flash",
         "slug": "minimax-m3-1-flash",
-        "intelligence": 42.38,
+        "intelligence": 42.71,
         "estimated": false,
         "creator": "MiniMax",
         "openWeights": false,
