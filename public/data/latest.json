@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T10:12:13.523Z",
+  "generatedAt": "2026-10-22T10:13:38.614Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -213,11 +213,9 @@
       "output": 2.7,
       "cachedRead": 0.1,
       "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 8520,
-      "notes": [
-        "4x · Limited time"
-      ],
+      "monthlyLimit": 15,
+      "monthlyRequests": 2130,
+      "notes": [],
       "aa": {
         "name": "Step 5 Preview",
         "slug": "step-5",
@@ -228,12 +226,12 @@
         "contextWindow": 1000000
       },
       "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 8520
+        "monthlyLimit": 15,
+        "monthlyRequests": 2130
       },
       "go-plus": {
-        "monthlyLimit": 240,
-        "monthlyRequests": 34080
+        "monthlyLimit": 60,
+        "monthlyRequests": 8520
       }
     },
     {
