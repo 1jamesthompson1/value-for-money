@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T10:06:26.023Z",
+  "generatedAt": "2026-10-24T09:34:01.494Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -16,6 +16,33 @@
     }
   },
   "models": [
+    {
+      "name": "Kimi K3.1 Pro",
+      "input": 2,
+      "output": 10,
+      "cachedRead": 0.2,
+      "cachedWrite": 2,
+      "monthlyLimit": 15,
+      "monthlyRequests": 735,
+      "notes": [],
+      "aa": {
+        "name": "Kimi K3.1 Pro",
+        "slug": "kimi-k3-1-pro",
+        "intelligence": 55.09,
+        "estimated": false,
+        "creator": "Kimi",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 735
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 2941
+      }
+    },
     {
       "name": "Gemini 4 Argon Contributor",
       "input": 4,
@@ -239,7 +266,7 @@
       "input": 3,
       "output": 15,
       "cachedRead": 0.3,
-      "cachedWrite": null,
+      "cachedWrite": 3,
       "monthlyLimit": 15,
       "monthlyRequests": 490,
       "notes": [],
