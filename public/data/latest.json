@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T09:34:01.494Z",
+  "generatedAt": "2026-10-25T09:50:11.572Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -44,16 +44,14 @@
       }
     },
     {
-      "name": "Gemini 4 Argon Contributor",
+      "name": "Gemini 4 Argon",
       "input": 4,
       "output": 20,
       "cachedRead": 0.2,
       "cachedWrite": null,
-      "monthlyLimit": 60,
+      "monthlyLimit": 30,
       "monthlyRequests": 2120,
-      "notes": [
-        "2x · Limited time"
-      ],
+      "notes": [],
       "aa": {
         "name": "Gemini 4 Argon (High)",
         "slug": "gemini-4-argon",
@@ -64,11 +62,11 @@
         "contextWindow": 1000000
       },
       "go": {
-        "monthlyLimit": 60,
+        "monthlyLimit": 30,
         "monthlyRequests": 2120
       },
       "go-plus": {
-        "monthlyLimit": 240,
+        "monthlyLimit": 120,
         "monthlyRequests": 8480
       }
     },
@@ -778,7 +776,6 @@
     }
   ],
   "unmatched": [
-    "LongCat 2.5 Preview Free",
     "Hy4 preview"
   ]
 }
