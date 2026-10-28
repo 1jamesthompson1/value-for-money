@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T10:37:13.228Z",
+  "generatedAt": "2026-10-28T11:22:16.572Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -17,33 +17,6 @@
   },
   "models": [
     {
-      "name": "Kimi K3.1 Pro",
-      "input": 2,
-      "output": 10,
-      "cachedRead": 0.2,
-      "cachedWrite": 2,
-      "monthlyLimit": 15,
-      "monthlyRequests": 735,
-      "notes": [],
-      "aa": {
-        "name": "Kimi K3.1 Pro",
-        "slug": "kimi-k3-1-pro",
-        "intelligence": 55.09,
-        "estimated": false,
-        "creator": "Kimi",
-        "openWeights": false,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 735
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 2941
-      }
-    },
-    {
       "name": "Gemini 4 Argon",
       "input": 4,
       "output": 20,
@@ -55,7 +28,7 @@
       "aa": {
         "name": "Gemini 4 Argon (High)",
         "slug": "gemini-4-argon",
-        "intelligence": 52.56,
+        "intelligence": 50.41,
         "estimated": false,
         "creator": "Google",
         "openWeights": false,
@@ -71,6 +44,33 @@
       }
     },
     {
+      "name": "Kimi K3.1 Pro",
+      "input": 2,
+      "output": 10,
+      "cachedRead": 0.2,
+      "cachedWrite": 2,
+      "monthlyLimit": 15,
+      "monthlyRequests": 735,
+      "notes": [],
+      "aa": {
+        "name": "Kimi K3.1 Pro",
+        "slug": "kimi-k3-1-pro",
+        "intelligence": 46,
+        "estimated": false,
+        "creator": "Kimi",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 735
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 2941
+      }
+    },
+    {
       "name": "Muse Spark 1.3 Contributor",
       "input": 0.1,
       "output": 0.2,
@@ -82,7 +82,7 @@
       "aa": {
         "name": "Muse Spark 1.3 (Max)",
         "slug": "muse-spark-1-3",
-        "intelligence": 48.09,
+        "intelligence": 36.42,
         "estimated": false,
         "creator": "Meta",
         "openWeights": false,
@@ -98,6 +98,33 @@
       }
     },
     {
+      "name": "Claude Haiku 5.5",
+      "input": 0.1,
+      "output": 0.5,
+      "cachedRead": 0.01,
+      "cachedWrite": 0.125,
+      "monthlyLimit": 15,
+      "monthlyRequests": 19230,
+      "notes": [],
+      "aa": {
+        "name": "Claude Haiku 5.5 (Max)",
+        "slug": "claude-haiku-5-5",
+        "intelligence": 36.23,
+        "estimated": false,
+        "creator": "Anthropic",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 19230
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 76920
+      }
+    },
+    {
       "name": "Grok 4.7",
       "input": 2,
       "output": 6,
@@ -107,9 +134,9 @@
       "monthlyRequests": 845,
       "notes": [],
       "aa": {
-        "name": "Grok 4.7 (Xhigh)",
-        "slug": "grok-4-7",
-        "intelligence": 46.45,
+        "name": "Grok 4.7 (High)",
+        "slug": "grok-4-7-high",
+        "intelligence": 35.01,
         "estimated": false,
         "creator": "SpaceXAI",
         "openWeights": false,
@@ -125,33 +152,6 @@
       }
     },
     {
-      "name": "MiMo-V2.6-Pro",
-      "input": 0.435,
-      "output": 0.87,
-      "cachedRead": 0.003625,
-      "cachedWrite": null,
-      "monthlyLimit": 15,
-      "monthlyRequests": 16300,
-      "notes": [],
-      "aa": {
-        "name": "MiMo-V2.6-Pro",
-        "slug": "mimo-v2-6-pro",
-        "intelligence": 46.32,
-        "estimated": false,
-        "creator": "Xiaomi",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 16300
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 65200
-      }
-    },
-    {
       "name": "Qwen3.8 Max",
       "input": 2,
       "output": 6,
@@ -163,7 +163,7 @@
       "aa": {
         "name": "Qwen3.8 Max (0902)",
         "slug": "qwen3-8-max",
-        "intelligence": 45.42,
+        "intelligence": 33.55,
         "estimated": false,
         "creator": "Alibaba",
         "openWeights": false,
@@ -190,7 +190,7 @@
       "aa": {
         "name": "DeepSeek V4.1 Flash 1017 (Max)",
         "slug": "deepseek-v4-1-flash-1017",
-        "intelligence": 45.1,
+        "intelligence": 32.49,
         "estimated": false,
         "creator": "DeepSeek",
         "openWeights": true,
@@ -217,7 +217,7 @@
       "aa": {
         "name": "GLM-5.3 (Max)",
         "slug": "glm-5-3",
-        "intelligence": 44.78,
+        "intelligence": 31.65,
         "estimated": false,
         "creator": "Z AI",
         "openWeights": true,
@@ -233,84 +233,30 @@
       }
     },
     {
-      "name": "Step 5 Preview",
-      "input": 1,
-      "output": 2.7,
-      "cachedRead": 0.1,
+      "name": "MiMo-V2.6-Pro",
+      "input": 0.435,
+      "output": 0.87,
+      "cachedRead": 0.003625,
       "cachedWrite": null,
       "monthlyLimit": 15,
-      "monthlyRequests": 2130,
+      "monthlyRequests": 16300,
       "notes": [],
       "aa": {
-        "name": "Step 5 Preview",
-        "slug": "step-5",
-        "intelligence": 43.73,
+        "name": "MiMo-V2.6-Pro",
+        "slug": "mimo-v2-6-pro",
+        "intelligence": 29.89,
         "estimated": false,
-        "creator": "StepFun",
+        "creator": "Xiaomi",
         "openWeights": true,
         "contextWindow": 1000000
       },
       "go": {
         "monthlyLimit": 15,
-        "monthlyRequests": 2130
+        "monthlyRequests": 16300
       },
       "go-plus": {
         "monthlyLimit": 60,
-        "monthlyRequests": 8520
-      }
-    },
-    {
-      "name": "Kimi K3",
-      "input": 3,
-      "output": 15,
-      "cachedRead": 0.3,
-      "cachedWrite": 3,
-      "monthlyLimit": 15,
-      "monthlyRequests": 490,
-      "notes": [],
-      "aa": {
-        "name": "Kimi K3 (Max)",
-        "slug": "kimi-k3",
-        "intelligence": 43.59,
-        "estimated": false,
-        "creator": "Kimi",
-        "openWeights": true,
-        "contextWindow": 1048576
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 490
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 1960
-      }
-    },
-    {
-      "name": "Claude Haiku 5.5",
-      "input": 0.1,
-      "output": 0.5,
-      "cachedRead": 0.01,
-      "cachedWrite": 0.125,
-      "monthlyLimit": 15,
-      "monthlyRequests": 19230,
-      "notes": [],
-      "aa": {
-        "name": "Claude Haiku 5.5 (Max)",
-        "slug": "claude-haiku-5-5",
-        "intelligence": 43.4,
-        "estimated": false,
-        "creator": "Anthropic",
-        "openWeights": false,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 19230
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 76920
+        "monthlyRequests": 65200
       }
     },
     {
@@ -325,7 +271,7 @@
       "aa": {
         "name": "MiniMax-M3.1-Flash",
         "slug": "minimax-m3-1-flash",
-        "intelligence": 42.71,
+        "intelligence": 28.91,
         "estimated": false,
         "creator": "MiniMax",
         "openWeights": false,
@@ -341,84 +287,30 @@
       }
     },
     {
-      "name": "GLM-5.3-Flash",
-      "input": 0.15,
-      "output": 0.5,
-      "cachedRead": 0.03,
+      "name": "Step 5 Preview",
+      "input": 1,
+      "output": 2.7,
+      "cachedRead": 0.1,
       "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 31580,
+      "monthlyLimit": 15,
+      "monthlyRequests": 2130,
       "notes": [],
       "aa": {
-        "name": "GLM-5.3-Flash",
-        "slug": "glm-5-3-flash",
-        "intelligence": 41.81,
+        "name": "Step 5 Preview",
+        "slug": "step-5",
+        "intelligence": 28.53,
         "estimated": false,
-        "creator": "Z AI",
+        "creator": "StepFun",
         "openWeights": true,
         "contextWindow": 1000000
       },
       "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 2130
+      },
+      "go-plus": {
         "monthlyLimit": 60,
-        "monthlyRequests": 31580
-      },
-      "go-plus": {
-        "monthlyLimit": 180,
-        "monthlyRequests": 94740
-      }
-    },
-    {
-      "name": "Qwen3.8 Flash",
-      "input": 0.15,
-      "output": 0.47,
-      "cachedRead": 0.016,
-      "cachedWrite": 0.2,
-      "monthlyLimit": 30,
-      "monthlyRequests": 27000,
-      "notes": [],
-      "aa": {
-        "name": "Qwen3.8-Flash-Next",
-        "slug": "qwen3-8-flash-next",
-        "intelligence": 39.82,
-        "estimated": false,
-        "creator": "Alibaba",
-        "openWeights": true,
-        "contextWindow": 256000
-      },
-      "go": {
-        "monthlyLimit": 30,
-        "monthlyRequests": 27000
-      },
-      "go-plus": {
-        "monthlyLimit": 90,
-        "monthlyRequests": 81000
-      }
-    },
-    {
-      "name": "Muse Spark 1.2 Contributor",
-      "input": 0.1,
-      "output": 0.2,
-      "cachedRead": 0.002,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 226600,
-      "notes": [],
-      "aa": {
-        "name": "Muse Spark 1.2 (Xhigh)",
-        "slug": "muse-spark-1-2",
-        "intelligence": 39.58,
-        "estimated": false,
-        "creator": "Meta",
-        "openWeights": false,
-        "contextWindow": 1048576
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 226600
-      },
-      "go-plus": {
-        "monthlyLimit": 120,
-        "monthlyRequests": 453200
+        "monthlyRequests": 8520
       }
     },
     {
@@ -433,7 +325,7 @@
       "aa": {
         "name": "GPT-6 Luna (Max)",
         "slug": "gpt-6-luna",
-        "intelligence": 38.12,
+        "intelligence": 27.76,
         "estimated": false,
         "creator": "OpenAI",
         "openWeights": false,
@@ -460,7 +352,7 @@
       "aa": {
         "name": "MiMo-V2.6-Flash",
         "slug": "mimo-v2-6-flash",
-        "intelligence": 37.88,
+        "intelligence": 26.73,
         "estimated": false,
         "creator": "Xiaomi",
         "openWeights": true,
@@ -476,33 +368,6 @@
       }
     },
     {
-      "name": "GPT 5.6 Luna",
-      "input": 0.2,
-      "output": 1.2,
-      "cachedRead": 0.02,
-      "cachedWrite": 0.25,
-      "monthlyLimit": 15,
-      "monthlyRequests": 10250,
-      "notes": [],
-      "aa": {
-        "name": "GPT-5.6 Luna (Max)",
-        "slug": "gpt-5-6-luna",
-        "intelligence": 37.32,
-        "estimated": false,
-        "creator": "OpenAI",
-        "openWeights": false,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 10250
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 41000
-      }
-    },
-    {
       "name": "DeepSeek V4 Pro",
       "input": 0.66,
       "output": 1.98,
@@ -514,7 +379,7 @@
       "aa": {
         "name": "DeepSeek V4 Pro 0813 (Max)",
         "slug": "deepseek-v4-pro",
-        "intelligence": 36,
+        "intelligence": 23.06,
         "estimated": false,
         "creator": "DeepSeek",
         "openWeights": true,
@@ -530,30 +395,30 @@
       }
     },
     {
-      "name": "GLM-5.2",
-      "input": 1.4,
-      "output": 4.4,
-      "cachedRead": 0.26,
+      "name": "MiniMax M3",
+      "input": 0.3,
+      "output": 1.2,
+      "cachedRead": 0.06,
       "cachedWrite": null,
       "monthlyLimit": 60,
-      "monthlyRequests": 4300,
+      "monthlyRequests": 16000,
       "notes": [],
       "aa": {
-        "name": "GLM-5.2 (Max)",
-        "slug": "glm-5-2",
-        "intelligence": 33.71,
+        "name": "MiniMax-M3",
+        "slug": "minimax-m3",
+        "intelligence": 18.73,
         "estimated": false,
-        "creator": "Z AI",
+        "creator": "MiniMax",
         "openWeights": true,
         "contextWindow": 1000000
       },
       "go": {
         "monthlyLimit": 60,
-        "monthlyRequests": 4300
+        "monthlyRequests": 16000
       },
       "go-plus": {
         "monthlyLimit": 180,
-        "monthlyRequests": 12900
+        "monthlyRequests": 48000
       }
     },
     {
@@ -570,7 +435,7 @@
       "aa": {
         "name": "Beam 1.0",
         "slug": "reflection-beam",
-        "intelligence": 30.33,
+        "intelligence": 17.73,
         "estimated": false,
         "creator": "Reflection",
         "openWeights": true,
@@ -584,199 +449,22 @@
         "monthlyLimit": "unlimited",
         "monthlyRequests": "unlimited"
       }
-    },
-    {
-      "name": "MiniMax M3",
-      "input": 0.3,
-      "output": 1.2,
-      "cachedRead": 0.06,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 16000,
-      "notes": [],
-      "aa": {
-        "name": "MiniMax-M3",
-        "slug": "minimax-m3",
-        "intelligence": 29.22,
-        "estimated": false,
-        "creator": "MiniMax",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 16000
-      },
-      "go-plus": {
-        "monthlyLimit": 180,
-        "monthlyRequests": 48000
-      }
-    },
-    {
-      "name": "MiMo-V2.5-Pro",
-      "input": 0.435,
-      "output": 0.87,
-      "cachedRead": 0.003625,
-      "cachedWrite": null,
-      "monthlyLimit": 15,
-      "monthlyRequests": 16300,
-      "notes": [],
-      "aa": {
-        "name": "MiMo-V2.5-Pro (Reasoning)",
-        "slug": "mimo-v2-5-pro",
-        "intelligence": 25.99,
-        "estimated": false,
-        "creator": "Xiaomi",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 15,
-        "monthlyRequests": 16300
-      },
-      "go-plus": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 65200
-      }
-    },
-    {
-      "name": "Kimi K2.7 Code",
-      "input": 0.95,
-      "output": 4,
-      "cachedRead": 0.19,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 6750,
-      "notes": [],
-      "aa": {
-        "name": "Kimi K2.7 Code",
-        "slug": "kimi-k2-7-code",
-        "intelligence": 25.81,
-        "estimated": false,
-        "creator": "Kimi",
-        "openWeights": true,
-        "contextWindow": 256000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 6750
-      },
-      "go-plus": {
-        "monthlyLimit": 180,
-        "monthlyRequests": 20250
-      }
-    },
-    {
-      "name": "Hy3",
-      "input": 0.14,
-      "output": 0.58,
-      "cachedRead": 0.035,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 21500,
-      "notes": [],
-      "aa": {
-        "name": "Hy3",
-        "slug": "hy3",
-        "intelligence": 25.3,
-        "estimated": false,
-        "creator": "Tencent",
-        "openWeights": true,
-        "contextWindow": 256000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 21500
-      },
-      "go-plus": {
-        "monthlyLimit": 240,
-        "monthlyRequests": 86000
-      }
-    },
-    {
-      "name": "Qwen3.7 Plus",
-      "input": 0.4,
-      "output": 1.6,
-      "cachedRead": 0.04,
-      "cachedWrite": 0.5,
-      "monthlyLimit": 60,
-      "monthlyRequests": 21600,
-      "notes": [],
-      "aa": {
-        "name": "Qwen3.7 Plus",
-        "slug": "qwen3-7-plus",
-        "intelligence": 25.16,
-        "estimated": false,
-        "creator": "Alibaba",
-        "openWeights": false,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 21600
-      },
-      "go-plus": {
-        "monthlyLimit": 180,
-        "monthlyRequests": 64800
-      }
-    },
-    {
-      "name": "MiMo-V2.5",
-      "input": 0.14,
-      "output": 0.28,
-      "cachedRead": 0.0028,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 150400,
-      "notes": [],
-      "aa": {
-        "name": "MiMo-V2.5",
-        "slug": "mimo-v2-5-0424",
-        "intelligence": 21.82,
-        "estimated": false,
-        "creator": "Xiaomi",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 150400
-      },
-      "go-plus": {
-        "monthlyLimit": 120,
-        "monthlyRequests": 300800
-      }
-    },
-    {
-      "name": "LongCat-2.0",
-      "input": 0.3,
-      "output": 1.2,
-      "cachedRead": 0.006,
-      "cachedWrite": null,
-      "monthlyLimit": 60,
-      "monthlyRequests": 57200,
-      "notes": [],
-      "aa": {
-        "name": "LongCat 2.0",
-        "slug": "longcat-2-0",
-        "intelligence": 19.11,
-        "estimated": false,
-        "creator": "LongCat",
-        "openWeights": true,
-        "contextWindow": 1000000
-      },
-      "go": {
-        "monthlyLimit": 60,
-        "monthlyRequests": 57200
-      },
-      "go-plus": {
-        "monthlyLimit": 240,
-        "monthlyRequests": 228800
-      }
     }
   ],
   "unmatched": [
+    "GLM-5.3-Flash",
+    "GLM-5.2",
+    "Kimi K3",
+    "Kimi K2.7 Code",
+    "LongCat-2.0",
     "Iceman Contributor Free",
-    "Hy4 preview"
+    "MiMo-V2.5",
+    "MiMo-V2.5-Pro",
+    "Muse Spark 1.2 Contributor",
+    "Qwen3.8 Flash",
+    "Qwen3.7 Plus",
+    "Hy4 preview",
+    "Hy3",
+    "GPT 5.6 Luna"
   ]
 }
