@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T11:22:16.572Z",
+  "generatedAt": "2026-10-29T11:32:59.448Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -274,7 +274,7 @@
         "intelligence": 28.91,
         "estimated": false,
         "creator": "MiniMax",
-        "openWeights": false,
+        "openWeights": true,
         "contextWindow": 1000000
       },
       "go": {
