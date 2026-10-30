@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T11:32:59.448Z",
+  "generatedAt": "2026-10-30T11:25:57.776Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -341,6 +341,33 @@
       }
     },
     {
+      "name": "GLM-5.3-Flash",
+      "input": 0.15,
+      "output": 0.5,
+      "cachedRead": 0.03,
+      "cachedWrite": null,
+      "monthlyLimit": 60,
+      "monthlyRequests": 31580,
+      "notes": [],
+      "aa": {
+        "name": "GLM-5.3-Flash",
+        "slug": "glm-5-3-flash",
+        "intelligence": 27.75,
+        "estimated": false,
+        "creator": "Z AI",
+        "openWeights": true,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 31580
+      },
+      "go-plus": {
+        "monthlyLimit": 180,
+        "monthlyRequests": 94740
+      }
+    },
+    {
       "name": "MiMo-V2.6-Flash",
       "input": 0.14,
       "output": 0.28,
@@ -452,7 +479,6 @@
     }
   ],
   "unmatched": [
-    "GLM-5.3-Flash",
     "GLM-5.2",
     "Kimi K3",
     "Kimi K2.7 Code",
