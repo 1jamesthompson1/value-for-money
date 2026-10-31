@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T11:25:57.776Z",
+  "generatedAt": "2026-10-31T10:56:41.779Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -184,8 +184,8 @@
       "output": 0.6,
       "cachedRead": 0.003,
       "cachedWrite": null,
-      "monthlyLimit": 80,
-      "monthlyRequests": 173330,
+      "monthlyLimit": 100,
+      "monthlyRequests": 216670,
       "notes": [],
       "aa": {
         "name": "DeepSeek V4.1 Flash 1017 (Max)",
@@ -197,12 +197,12 @@
         "contextWindow": 1000000
       },
       "go": {
-        "monthlyLimit": 80,
-        "monthlyRequests": 173330
+        "monthlyLimit": 100,
+        "monthlyRequests": 216670
       },
       "go-plus": {
-        "monthlyLimit": 160,
-        "monthlyRequests": 346670
+        "monthlyLimit": 200,
+        "monthlyRequests": 433330
       }
     },
     {
