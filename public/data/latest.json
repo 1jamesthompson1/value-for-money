@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T13:32:12.806Z",
+  "generatedAt": "2026-11-03T12:49:53.246Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -134,9 +134,9 @@
       "monthlyRequests": 845,
       "notes": [],
       "aa": {
-        "name": "Grok 4.7 (High)",
-        "slug": "grok-4-7-high",
-        "intelligence": 35.01,
+        "name": "Grok 4.7 (Xhigh)",
+        "slug": "grok-4-7",
+        "intelligence": 35.34,
         "estimated": false,
         "creator": "SpaceXAI",
         "openWeights": false,
