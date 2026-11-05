@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T13:00:35.990Z",
+  "generatedAt": "2026-11-05T13:13:54.376Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -395,6 +395,33 @@
       }
     },
     {
+      "name": "GPT 5.6 Luna",
+      "input": 0.2,
+      "output": 1.2,
+      "cachedRead": 0.02,
+      "cachedWrite": 0.25,
+      "monthlyLimit": 15,
+      "monthlyRequests": 10250,
+      "notes": [],
+      "aa": {
+        "name": "GPT-5.6 Luna (Max)",
+        "slug": "gpt-5-6-luna",
+        "intelligence": 23.79,
+        "estimated": false,
+        "creator": "OpenAI",
+        "openWeights": false,
+        "contextWindow": 1000000
+      },
+      "go": {
+        "monthlyLimit": 15,
+        "monthlyRequests": 10250
+      },
+      "go-plus": {
+        "monthlyLimit": 60,
+        "monthlyRequests": 41000
+      }
+    },
+    {
       "name": "DeepSeek V4 Pro",
       "input": 0.66,
       "output": 1.98,
@@ -489,8 +516,8 @@
     "Muse Spark 1.2 Contributor",
     "Qwen3.8 Flash",
     "Qwen3.7 Plus",
+    "Hy4",
     "Hy4 preview",
-    "Hy3",
-    "GPT 5.6 Luna"
+    "Hy3"
   ]
 }
