@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T13:13:54.376Z",
+  "generatedAt": "2026-11-06T12:58:13.213Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -58,7 +58,7 @@
         "intelligence": 46.45,
         "estimated": false,
         "creator": "Kimi",
-        "openWeights": false,
+        "openWeights": true,
         "contextWindow": 1000000
       },
       "go": {
