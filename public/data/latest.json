@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-08T11:57:16.986Z",
+  "generatedAt": "2026-11-09T13:56:00.227Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -512,6 +512,7 @@
     "LongCat-2.0",
     "Crouton Alpha Free",
     "Iceman Contributor Free",
+    "LongCat 2.5 Free",
     "MiMo-V2.5",
     "MiMo-V2.5-Pro",
     "Muse Spark 1.2 Contributor",
