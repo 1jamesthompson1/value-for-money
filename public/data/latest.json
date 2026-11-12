@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T12:44:50.355Z",
+  "generatedAt": "2026-11-12T13:47:15.567Z",
   "sources": {
     "opencode": "https://opencode.ai/v2/docs/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -287,6 +287,33 @@
       }
     },
     {
+      "name": "Qwen3.8 Flash",
+      "input": 0.15,
+      "output": 0.47,
+      "cachedRead": 0.016,
+      "cachedWrite": 0.2,
+      "monthlyLimit": 30,
+      "monthlyRequests": 27000,
+      "notes": [],
+      "aa": {
+        "name": "Qwen3.8-Flash-Next",
+        "slug": "qwen3-8-flash-next",
+        "intelligence": 28.58,
+        "estimated": false,
+        "creator": "Alibaba",
+        "openWeights": true,
+        "contextWindow": 256000
+      },
+      "go": {
+        "monthlyLimit": 30,
+        "monthlyRequests": 27000
+      },
+      "go-plus": {
+        "monthlyLimit": 90,
+        "monthlyRequests": 81000
+      }
+    },
+    {
       "name": "Step 5 Preview",
       "input": 1,
       "output": 2.7,
@@ -515,7 +542,6 @@
     "MiMo-V2.5",
     "MiMo-V2.5-Pro",
     "Muse Spark 1.2 Contributor",
-    "Qwen3.8 Flash",
     "Qwen3.7 Plus",
     "Hy4",
     "Hy4 preview",
