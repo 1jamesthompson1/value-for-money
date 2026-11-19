@@ -90,6 +90,7 @@ function parseIntLoose(value) {
   if (value == null) return null;
   const cleaned = plain(value).replace(/,/g, "");
   if (/unlimited/i.test(cleaned)) return "unlimited";
+  if (/∞/.test(cleaned)) return "unlimited";
   const match = cleaned.match(/\d+/);
   return match ? Number(match[0]) : null;
 }
@@ -148,9 +149,9 @@ function extractTables(html) {
     const rowRe = /<tr\b[^>]*>([\s\S]*?)<\/tr\s*>/gi;
     let rowMatch;
     while ((rowMatch = rowRe.exec(body))) {
-      const cells = [...rowMatch[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td\s*>/gi)].map(
-        (m) => m[1]
-      );
+      const cells = [
+        ...rowMatch[1].matchAll(/<(?:th|td)\b[^>]*>([\s\S]*?)<\/(?:th|td)\s*>/gi),
+      ].map((m) => m[1]);
       if (cells.length) rows.push(cells);
     }
     tables.push({ header, rows });
@@ -172,6 +173,60 @@ function findTables(tables, headerIncludes, expected) {
 
 export function parseOpencode(html) {
   const tables = extractTables(html);
+
+  // New layout: a combined table has both plan values in each allowances row.
+  const combinedTable = tables.find((table) =>
+    table.header.some((h) => h.toLowerCase().includes("monthly limit")) &&
+    table.header.some((h) => h.toLowerCase().includes("est. requests"))
+  );
+
+  if (combinedTable) {
+    const plans = {
+      go: { label: "Go", price: 10, models: {} },
+      "go-plus": { label: "Go Plus", price: 40, models: {} },
+    };
+
+    for (const row of combinedTable.rows) {
+      if (row.length < 4) continue;
+      const nameMatch = row[0].match(
+        /<span[^>]*console-go-models-model-name[^>]*>([\s\S]*?)<\/span>/i
+      );
+      const name = baseName(nameMatch ? plain(nameMatch[1]) : cellName(row[0]));
+      if (!name) continue;
+
+      const requestText = plain(row[2]);
+      const limitText = plain(row[3]);
+      const requestMatch = requestText.match(
+        /Go:\s*([^;]+);\s*Go Plus:\s*(.+)$/i
+      );
+      const limitMatch = limitText.match(
+        /Go:\s*([^;]+);\s*Go Plus:\s*(.+)$/i
+      );
+      if (!requestMatch || !limitMatch) continue;
+
+      for (const [index, key] of ["go", "go-plus"].entries()) {
+        const requestValue = parseIntLoose(requestMatch[index + 1]);
+        const limitValue = limitMatch[index + 1].includes("∞")
+          ? "unlimited"
+          : parseMoney(limitMatch[index + 1]);
+        plans[key].models[normalizeName(name)] = {
+          name,
+          input: null,
+          output: null,
+          cachedRead: null,
+          cachedWrite: null,
+          monthlyLimit: limitValue,
+          monthlyRequests: requestValue,
+          notes: [],
+        };
+      }
+    }
+
+    if (Object.keys(plans.go.models).length < 5) {
+      throw new Error("OpenCode combined allowances table looks empty; layout may have changed");
+    }
+    return plans;
+  }
 
   // Page order: Go pricing, Go Plus pricing, Go requests, Go Plus requests.
   const pricingTables = findTables(tables, "monthly limit", 2);
