@@ -3,7 +3,7 @@
  * Scrape OpenCode Go usage limits + Artificial Analysis Intelligence Index.
  *
  * Sources:
- *   https://opencode.ai/v2/docs/console/go/       (server-rendered HTML tables)
+ *   https://opencode.ai/console/go/               (server-rendered HTML tables)
  *   https://artificialanalysis.ai/leaderboards/models (RSC payload)
  *
  * Output:
@@ -21,7 +21,7 @@ const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, "public", "data");
 const HISTORY_DIR = path.join(DATA_DIR, "history");
 
-const OPENCODE_URL = "https://opencode.ai/v2/docs/console/go/";
+const OPENCODE_URL = "https://opencode.ai/console/go/";
 const AA_URL = "https://artificialanalysis.ai/leaderboards/models";
 const USER_AGENT =
   "opencode-value-map/1.0 (static GitHub Pages dashboard; daily refresh)";
@@ -137,18 +137,18 @@ function tokens(name) {
 
 function extractTables(html) {
   const tables = [];
-  const tableRe = /<table>([\s\S]*?)<\/table>/gi;
+  const tableRe = /<table\b[^>]*>([\s\S]*?)<\/table\s*>/gi;
   let tableMatch;
   while ((tableMatch = tableRe.exec(html))) {
     const body = tableMatch[1];
-    const header = [...body.matchAll(/<th>([\s\S]*?)<\/th>/gi)].map((m) =>
+    const header = [...body.matchAll(/<th\b[^>]*>([\s\S]*?)<\/th\s*>/gi)].map((m) =>
       plain(m[1])
     );
     const rows = [];
-    const rowRe = /<tr>([\s\S]*?)<\/tr>/gi;
+    const rowRe = /<tr\b[^>]*>([\s\S]*?)<\/tr\s*>/gi;
     let rowMatch;
     while ((rowMatch = rowRe.exec(body))) {
-      const cells = [...rowMatch[1].matchAll(/<td>([\s\S]*?)<\/td>/gi)].map(
+      const cells = [...rowMatch[1].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td\s*>/gi)].map(
         (m) => m[1]
       );
       if (cells.length) rows.push(cells);
@@ -170,7 +170,7 @@ function findTables(tables, headerIncludes, expected) {
   return found;
 }
 
-function parseOpencode(html) {
+export function parseOpencode(html) {
   const tables = extractTables(html);
 
   // Page order: Go pricing, Go Plus pricing, Go requests, Go Plus requests.
@@ -633,7 +633,9 @@ async function main() {
   if (usedAliases.length) console.log(`  aliases: ${usedAliases.join("; ")}`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+  main().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}
