@@ -26,3 +26,29 @@ test("parseOpencode accepts tables with HTML attributes", () => {
   assert.equal(plans.go.models["model 1"].monthlyRequests, 100);
   assert.equal(plans["go-plus"].models["model 1"].monthlyLimit, 10);
 });
+
+test("parseOpencode accepts combined Go and Go Plus allowances table", () => {
+  const modelRows = Array.from(
+    { length: 5 },
+    (_, index) =>
+      `<tr data-model="model-${index + 1}">
+        <th scope="row"><span class="console-go-models-model-name">Model ${index + 1}</span></th>
+        <td aria-hidden="true">chart</td>
+        <td><span class="sr-only">Go: ${100 * (index + 1)}; Go Plus: ${400 * (index + 1)}</span></td>
+        <td><span class="sr-only">Go: $${index + 10}; Go Plus: $${(index + 10) * 4}</span></td>
+      </tr>`
+  ).join("");
+
+  const html = `
+    <table aria-label="Go and Go Plus allowances">
+      <thead><tr><th>Model</th><th>Est. requests / 5 hr</th><th>Monthly limit</th></tr></thead>
+      <tbody>${modelRows}</tbody>
+    </table>
+  `;
+
+  const plans = parseOpencode(html);
+  assert.equal(plans.go.models["model 1"].monthlyLimit, 10);
+  assert.equal(plans.go.models["model 1"].monthlyRequests, 100);
+  assert.equal(plans["go-plus"].models["model 1"].monthlyLimit, 40);
+  assert.equal(plans["go-plus"].models["model 1"].monthlyRequests, 400);
+});
