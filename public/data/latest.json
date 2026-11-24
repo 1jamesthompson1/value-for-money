@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T16:00:17.177Z",
+  "generatedAt": "2026-11-24T15:54:32.383Z",
   "sources": {
     "opencode": "https://opencode.ai/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -350,7 +350,7 @@
       "monthlyRequests": 6320,
       "notes": [],
       "aa": {
-        "name": "GLM-5.3-Flash",
+        "name": "GLM-5.3-Flash (Max)",
         "slug": null,
         "intelligence": 27.8,
         "estimated": false,
@@ -489,6 +489,7 @@
     "LongCat 2.5",
     "Muse Spark 1.2 Contributor",
     "Muse Spark 1.3 Contributor",
+    "HungerG Free",
     "Hy4 flash Free",
     "Iceman Contributor Free"
   ]
