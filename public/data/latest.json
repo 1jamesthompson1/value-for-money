@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T15:54:32.383Z",
+  "generatedAt": "2026-11-25T15:38:24.738Z",
   "sources": {
     "opencode": "https://opencode.ai/console/go/",
     "artificialAnalysis": "https://artificialanalysis.ai/leaderboards/models",
@@ -28,7 +28,7 @@
       "aa": {
         "name": "Gemini 4 Argon (High)",
         "slug": null,
-        "intelligence": 50.41,
+        "intelligence": 50.51,
         "estimated": false,
         "creator": "Google",
         "openWeights": false,
@@ -55,7 +55,7 @@
       "aa": {
         "name": "Kimi K3.1 Pro",
         "slug": null,
-        "intelligence": 46.45,
+        "intelligence": 46.55,
         "estimated": false,
         "creator": "Kimi",
         "openWeights": true,
@@ -82,7 +82,7 @@
       "aa": {
         "name": "Qwen4 Max",
         "slug": null,
-        "intelligence": 42.89,
+        "intelligence": 42.79,
         "estimated": false,
         "creator": "Alibaba",
         "openWeights": false,
@@ -109,7 +109,7 @@
       "aa": {
         "name": "Claude Haiku 5.5 (Max)",
         "slug": null,
-        "intelligence": 36.48,
+        "intelligence": 36.54,
         "estimated": false,
         "creator": "Anthropic",
         "openWeights": false,
@@ -136,7 +136,7 @@
       "aa": {
         "name": "Grok 4.7 (Xhigh)",
         "slug": null,
-        "intelligence": 35.49,
+        "intelligence": 35.37,
         "estimated": false,
         "creator": "SpaceXAI",
         "openWeights": false,
@@ -163,7 +163,7 @@
       "aa": {
         "name": "DeepSeek V4.1 Flash 1017 (Max)",
         "slug": null,
-        "intelligence": 32.59,
+        "intelligence": 32.4,
         "estimated": false,
         "creator": "DeepSeek",
         "openWeights": true,
@@ -190,7 +190,7 @@
       "aa": {
         "name": "GLM-5.3 (Max)",
         "slug": null,
-        "intelligence": 31.65,
+        "intelligence": 31.55,
         "estimated": false,
         "creator": "Z AI",
         "openWeights": true,
@@ -217,7 +217,7 @@
       "aa": {
         "name": "MiMo-V2.6-Pro",
         "slug": null,
-        "intelligence": 29.89,
+        "intelligence": 29.94,
         "estimated": false,
         "creator": "Xiaomi",
         "openWeights": true,
@@ -260,33 +260,6 @@
       }
     },
     {
-      "name": "Qwen3.8 Flash",
-      "input": null,
-      "output": null,
-      "cachedRead": null,
-      "cachedWrite": null,
-      "monthlyLimit": 30,
-      "monthlyRequests": 5400,
-      "notes": [],
-      "aa": {
-        "name": "Qwen3.8-Flash-Next",
-        "slug": null,
-        "intelligence": 28.58,
-        "estimated": false,
-        "creator": "Alibaba",
-        "openWeights": true,
-        "contextWindow": 256000
-      },
-      "go": {
-        "monthlyLimit": 30,
-        "monthlyRequests": 5400
-      },
-      "go-plus": {
-        "monthlyLimit": 90,
-        "monthlyRequests": 16200
-      }
-    },
-    {
       "name": "Step 5 Preview",
       "input": null,
       "output": null,
@@ -298,7 +271,7 @@
       "aa": {
         "name": "Step 5 Preview",
         "slug": null,
-        "intelligence": 28.53,
+        "intelligence": 28.52,
         "estimated": false,
         "creator": "StepFun",
         "openWeights": true,
@@ -311,6 +284,33 @@
       "go-plus": {
         "monthlyLimit": 60,
         "monthlyRequests": 1700
+      }
+    },
+    {
+      "name": "Qwen3.8 Flash",
+      "input": null,
+      "output": null,
+      "cachedRead": null,
+      "cachedWrite": null,
+      "monthlyLimit": 30,
+      "monthlyRequests": 5400,
+      "notes": [],
+      "aa": {
+        "name": "Qwen3.8-Flash-Next",
+        "slug": null,
+        "intelligence": 28.47,
+        "estimated": false,
+        "creator": "Alibaba",
+        "openWeights": true,
+        "contextWindow": 256000
+      },
+      "go": {
+        "monthlyLimit": 30,
+        "monthlyRequests": 5400
+      },
+      "go-plus": {
+        "monthlyLimit": 90,
+        "monthlyRequests": 16200
       }
     },
     {
@@ -352,7 +352,7 @@
       "aa": {
         "name": "GLM-5.3-Flash (Max)",
         "slug": null,
-        "intelligence": 27.8,
+        "intelligence": 27.74,
         "estimated": false,
         "creator": "Z AI",
         "openWeights": true,
@@ -379,7 +379,7 @@
       "aa": {
         "name": "MiMo-V2.6-Flash",
         "slug": null,
-        "intelligence": 26.73,
+        "intelligence": 26.83,
         "estimated": false,
         "creator": "Xiaomi",
         "openWeights": true,
@@ -433,7 +433,7 @@
       "aa": {
         "name": "MiniMax-M3",
         "slug": null,
-        "intelligence": 18.88,
+        "intelligence": 19.05,
         "estimated": false,
         "creator": "MiniMax",
         "openWeights": true,
@@ -460,7 +460,7 @@
       "aa": {
         "name": "Beam 1.0",
         "slug": null,
-        "intelligence": 17.73,
+        "intelligence": 17.66,
         "estimated": false,
         "creator": "Reflection",
         "openWeights": true,
